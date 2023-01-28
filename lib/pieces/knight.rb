@@ -18,8 +18,8 @@ class Knight < Piece
     list = []
     possible_directions.each do |curr_direction|
       result = []
-      result.push((place.x + curr_direction[0]))
-      result.push((place.y + curr_direction[1]))
+      result.push((place.x_coord + curr_direction[0]))
+      result.push((place.y_coord + curr_direction[1]))
 
       next if coordinate_invalid?
 
