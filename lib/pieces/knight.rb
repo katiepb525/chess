@@ -21,7 +21,7 @@ class Knight < Piece
       result.push((place.x_coord + curr_direction[0]))
       result.push((place.y_coord + curr_direction[1]))
 
-      next if coordinate_invalid?
+      next if coordinate_invalid?(result)
 
       new_place = Place.new(result[0], result[1])
       list.push(new_place)
