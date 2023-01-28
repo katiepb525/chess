@@ -1,0 +1,2 @@
+describe Rook do
+end

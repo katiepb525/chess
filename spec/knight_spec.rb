@@ -1,0 +1,2 @@
+describe Knight do
+end
