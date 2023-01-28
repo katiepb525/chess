@@ -5,18 +5,23 @@ require './lib/place'
 # knight piece
 # - moves any direction in an L shape
 # - can 'hop' over other pieces
-class Knight
-  POSSIBLE_DIRECTIONS = [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]].freeze
+class Knight < Piece
+  attr_reader :possible_directions
+
+  def initialize
+    super
+    @possible_directions = [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]].freeze
+  end
 
   # generate list of legal moves from a single place
   def legal_moves(place)
     list = []
-    POSSIBLE_DIRECTIONS.each do |curr_direction|
+    possible_directions.each do |curr_direction|
       result = []
       result.push((place.x + curr_direction[0]))
       result.push((place.y + curr_direction[1]))
 
-      next if result[0] >= 8 || result[1] >= 8 || result[0].negative? || result[1].negative?
+      next if coordinate_invalid?
 
       new_place = Place.new(result[0], result[1])
       list.push(new_place)
