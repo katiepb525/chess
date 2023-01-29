@@ -2,18 +2,41 @@ require './lib/pieces/knight'
 
 describe Knight do
   describe '#legal_moves' do
+    subject(:knight) { described_class.new }
+
     context 'place is [0,1]' do
-      subject(:knight) { described_class.new }
-      let(:place) { double('Place', x_coord: 0, y_coord: 1)}
+      let(:place) { double('Place', x_coord: 0, y_coord: 1) }
+      let(:result_arr) { [] }
+
+      before do
+        result = knight.legal_moves(place)
+        result.each do |place|
+          arr = []
+          arr.push(place.x_coord, place.y_coord)
+          result_arr.push(arr)
+        end
+      end
 
       it 'returns correct list of coordinates' do
+        expect(result_arr).to include([2, 2], [1, 3], [2, 0])
+      end
+    end
+
+    context 'place is [7,7]' do
+      let(:place) { double('Place', x_coord: 7, y_coord: 7) }
+      let(:result_arr) { [] }
+
+      before do
         result = knight.legal_moves(place)
-        expect(result[0].x_coord).to eq(2)
-        expect(result[0].y_coord).to eq(2)
-        expect(result[1].x_coord).to eq(1)
-        expect(result[1].y_coord).to eq(3)
-        expect(result[2].x_coord).to eq(2)
-        expect(result[2].y_coord).to eq(0)
+        result.each do |place|
+          arr = []
+          arr.push(place.x_coord, place.y_coord)
+          result_arr.push(arr)
+        end
+      end
+
+      it 'returns correct list of coordinates' do
+        expect(result_arr).to include([5, 6], [6, 5])
       end
     end
   end
