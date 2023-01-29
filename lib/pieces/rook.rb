@@ -39,6 +39,6 @@ class Rook < Piece
   end
 end
 
-place = Place.new(0, 0)
-rook = Rook.new
-p rook.legal_moves(place)
+# place = Place.new(0, 0)
+# rook = Rook.new
+# p rook.legal_moves(place)
