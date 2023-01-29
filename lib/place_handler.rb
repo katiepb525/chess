@@ -27,10 +27,9 @@ class PlaceHandler
 
   def mark_x_axis
     8.times do |idx|
-      binding.pry if list.empty?
       result = []
-      result.push(push_negative_or_positive?(place.x_coord, curr_direction[0], idx))
-      result.push((place.y_coord + curr_direction[1]))
+      result.push(push_negative_or_positive?(place.x_coord, curr_direction.x_coord, idx))
+      result.push((place.y_coord + curr_direction.y_coord))
       next if coordinate_invalid?(result)
 
       list.push(result)
@@ -40,8 +39,8 @@ class PlaceHandler
   def mark_y_axis
     8.times do |idx|
       result = []
-      result.push(place.x_coord + curr_direction[0])
-      result.push(push_negative_or_positive?(place.y_coord, curr_direction[1], idx))
+      result.push(place.x_coord + curr_direction.x_coord)
+      result.push(push_negative_or_positive?(place.y_coord, curr_direction.y_coord, idx))
       next if coordinate_invalid?(result)
 
       list.push(result)
