@@ -11,22 +11,18 @@ class Knight < Piece
   def initialize
     super
     @possible_directions = [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]].freeze
+    @place_handler = nil
   end
 
   # generate list of legal moves from a single place
   def legal_moves(place)
-    list = []
+    place_handler = PlaceHandler.new(place)
     possible_directions.each do |curr_direction|
-      result = []
-      result.push((place.x_coord + curr_direction[0]))
-      result.push((place.y_coord + curr_direction[1]))
-
-      next if coordinate_invalid?(result)
-
-      new_place = Place.new(result[0], result[1])
-      list.push(new_place)
+      curr_to_place = Place.new(curr_direction[0], curr_direction[1])
+      place_handler.curr_direction = curr_to_place
+      place_handler.mark_l_shape
     end
-    list
+    place_handler.list
   end
 end
 

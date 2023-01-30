@@ -46,4 +46,14 @@ class PlaceHandler
       list.push(result)
     end
   end
+
+  def mark_l_shape
+    result = []
+    result.push((place.x_coord + curr_direction.x_coord))
+    result.push((place.y_coord + curr_direction.y_coord))
+    if !coordinate_invalid?(result)
+      new_place = Place.new(result[0], result[1])
+      list.push(new_place)
+    end
+  end
 end
