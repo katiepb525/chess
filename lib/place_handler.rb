@@ -47,6 +47,18 @@ class PlaceHandler
     end
   end
 
+  def mark_x_and_y_axis
+    case curr_direction.x_coord
+    when 1, -1
+      mark_x_axis
+    end
+
+    case curr_direction.y_coord
+    when 1, -1
+      mark_y_axis
+    end
+  end
+
   def mark_l_shape
     result = []
     result.push((place.x_coord + curr_direction.x_coord))

@@ -17,23 +17,10 @@ class Rook < Piece
   # generate list of legal moves from single place
   def legal_moves(place)
     place_handler = PlaceHandler.new(place)
-
     possible_directions.each do |curr_direction|
       curr_to_place = Place.new(curr_direction[0], curr_direction[1])
       place_handler.curr_direction = curr_to_place
-      case place_handler.curr_direction.x_coord
-      when 1
-        place_handler.mark_x_axis
-      when -1
-        place_handler.mark_x_axis
-      end
-
-      case place_handler.curr_direction.y_coord
-      when 1
-        place_handler.mark_y_axis
-      when -1
-        place_handler.mark_y_axis
-      end
+      place_handler.mark_x_and_y_axis
     end
     place_handler.list
   end
