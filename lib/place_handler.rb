@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry-byebug'
 
 # Organizes and assists in creating list of coordinates from a given place on the chess board.
@@ -31,6 +33,7 @@ class PlaceHandler
       result.push(push_negative_or_positive?(place.x_coord, curr_direction.x_coord, idx))
       result.push((place.y_coord + curr_direction.y_coord))
       next if coordinate_invalid?(result)
+
       new_place = Place.new(result[0], result[1])
       list.push(new_place)
     end
@@ -42,6 +45,7 @@ class PlaceHandler
       result.push(place.x_coord + curr_direction.x_coord)
       result.push(push_negative_or_positive?(place.y_coord, curr_direction.y_coord, idx))
       next if coordinate_invalid?(result)
+
       new_place = Place.new(result[0], result[1])
       list.push(new_place)
     end
@@ -63,9 +67,9 @@ class PlaceHandler
     result = []
     result.push((place.x_coord + curr_direction.x_coord))
     result.push((place.y_coord + curr_direction.y_coord))
-    if !coordinate_invalid?(result)
-      new_place = Place.new(result[0], result[1])
-      list.push(new_place)
-    end
+    return if coordinate_invalid?(result)
+
+    new_place = Place.new(result[0], result[1])
+    list.push(new_place)
   end
 end

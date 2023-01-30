@@ -1,4 +1,4 @@
-require './lib/pieces/rook'
+# frozen_string_literal: true
 
 require './lib/pieces/rook'
 
@@ -17,9 +17,10 @@ describe Rook do
         result_arr.push(arr)
       end
     end
-  
+
     it 'returns correct list of coordinates with none missing' do
-      expect(result_arr).to include([1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7])
+      expect(result_arr).to include([1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [0, 1], [0, 2], [0, 3],
+                                    [0, 4], [0, 5], [0, 6], [0, 7])
       expect(result_arr.length).to be(14)
     end
   end

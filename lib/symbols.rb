@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Symbols
   def rook_light
     rook_light = "\u2656"

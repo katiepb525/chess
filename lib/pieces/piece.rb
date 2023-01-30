@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/place'
 require './lib/place_handler'
 

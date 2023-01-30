@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/pieces/knight'
 
 describe Knight do
