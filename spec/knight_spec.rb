@@ -17,8 +17,9 @@ describe Knight do
         end
       end
 
-      it 'returns correct list of coordinates' do
+      it 'returns correct list of coordinates with none missing' do
         expect(result_arr).to include([2, 2], [1, 3], [2, 0])
+        expect(result_arr.length).to be(3)
       end
     end
 
@@ -35,8 +36,9 @@ describe Knight do
         end
       end
 
-      it 'returns correct list of coordinates' do
+      it 'returns correct list of coordinates with none missing' do
         expect(result_arr).to include([5, 6], [6, 5])
+        expect(result_arr.length).to be(2)
       end
     end
   end
