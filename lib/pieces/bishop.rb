@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require './lib/pieces/piece'
 
 class Bishop < Piece
   def initialize
     super
-    @possible_directions = [[1, -1],[-1, 1],[-1, -1],[1, 1],]
+    @possible_directions = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
     @place_handler = nil
   end
 
@@ -14,11 +16,10 @@ class Bishop < Piece
       curr_to_place = Place.new(curr_direction[0], curr_direction[1])
       place_handler.curr_direction = curr_to_place
       place_handler.mark_all_diagonals
-    end 
+    end
     place_handler.list
   end
 end
-
 
 # place = Place.new(3, 3)
 # bishop = Bishop.new

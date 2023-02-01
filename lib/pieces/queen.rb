@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require './lib/pieces/piece'
 
 class Queen < Piece
   attr_reader :possible_directions_diag, :possible_directions_straight
+
   def initialize
     super
     @possible_directions_diag = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
@@ -22,11 +25,10 @@ class Queen < Piece
       curr_to_place = Place.new(curr_direction[0], curr_direction[1])
       place_handler.curr_direction = curr_to_place
       place_handler.mark_all_diagonals
-    end 
+    end
     place_handler.list
   end
 end
-
 
 # place = Place.new(3, 3)
 # queen = Queen.new

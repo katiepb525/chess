@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/pieces/bishop'
 
 describe Bishop do
@@ -31,7 +33,6 @@ describe Bishop do
       it 'has no duplicates' do
         expect(result_arr).to eq(result_arr.uniq)
       end
-
     end
   end
 end

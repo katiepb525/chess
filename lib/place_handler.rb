@@ -69,7 +69,7 @@ class PlaceHandler
       result.push(push_negative_or_positive?(place.x_coord, curr_direction.x_coord, idx))
       result.push(push_negative_or_positive?(place.y_coord, curr_direction.y_coord, idx))
       next if coordinate_invalid?(result) || result == [place.x_coord, place.y_coord]
-  
+
       new_place = Place.new(result[0], result[1])
       list.push(new_place)
     end
