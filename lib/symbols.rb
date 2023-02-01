@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 module Symbols
+  def square_light
+    square_light = "\u25A1"
+    square_light.encode('utf-8')
+  end
+
+  def square_dark
+    square_dark = "\u25A0"	
+    square_dark.encode('utf-8')
+  end
+  
   def king_light
     king_light = "\u2654"
     king_light.encode('utf-8')
