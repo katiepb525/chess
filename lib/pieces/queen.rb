@@ -5,13 +5,10 @@ require './lib/pieces/piece'
 # Queen class stores information regarding queens.
 # - Can move as far as possible in any straight or diagonal direction.
 class Queen < Piece
-  attr_reader :possible_directions_diag, :possible_directions_straight
-
   def initialize
     super
     @possible_directions_diag = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
     @possible_directions_straight = [[1, 0], [0, -1], [0, 1], [-1, 0]].freeze
-    @place_handler = nil
   end
 
   # generate list of legal moves from single place

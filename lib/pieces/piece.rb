@@ -5,8 +5,6 @@ require './lib/place_handler'
 
 # Parent class initalizing necessary methods/instance variables and dependencies.
 class Piece
-  attr_reader :possible_directions
-
   def initialize
     @possible_directions = nil
   end

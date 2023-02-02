@@ -5,13 +5,9 @@ require './lib/pieces/piece'
 # Rook class stores information regarding rooks.
 # - Can move as far as possible in any straight direction.
 class Rook < Piece
-  attr_reader :possible_directions
-  attr_accessor :place_handler
-
   def initialize
     super
     @possible_directions = [[1, 0], [0, -1], [0, 1], [-1, 0]].freeze
-    @place_handler = nil
   end
 
   # generate list of legal moves from single place
