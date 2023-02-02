@@ -18,6 +18,7 @@ class Pawn < Piece
   def legal_moves(place)
     place_handler = PlaceHandler.new
     place_handler.create_legal_moveset(@possible_directions, place)
+    place_handler.list
   end
 end
 
