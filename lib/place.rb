@@ -2,6 +2,7 @@
 
 require './lib/symbols'
 
+# Place class stores information regarding the current square or 'place'.
 class Place
   include Symbols
   attr_reader :x_coord, :y_coord, :color_square
@@ -14,6 +15,7 @@ class Place
     @symbol = nil
   end
 
+  # To be called upon initalization of a board, or updating a place with a piece.
   def update_symbol
     case color_square
     when :dark

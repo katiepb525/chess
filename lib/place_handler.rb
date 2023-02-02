@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
-
-# Organizes and assists in creating list of coordinates from a given place on the chess board.
+# Manages creation of legal movesets from coordinates.
 class PlaceHandler
   attr_reader :place
   attr_accessor :curr_direction, :result, :list

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
+
 require './lib/place'
 
+# Chess board class stores infromation about the board.
+# - Initalizes starting places of pieces.
+# - Stores information about each square, it's color (light or dark), whether its occupied by a piece,
 class Board
   attr_accessor :grid
 

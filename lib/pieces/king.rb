@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 require './lib/pieces/piece'
 
+# King piece stores information regarding kings.
+# - May move one square in any direction.
+# - Is not allowed to make a move that would put itself in check or checkmate.
 class King < Piece
-
   def initialize
     super
     @possible_directions = [[1, 0], [-1, 0], [0, -1], [0, 1], [-1, 1], [1, 1], [-1, -1], [1, -1]]

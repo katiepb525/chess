@@ -1,6 +1,13 @@
+# frozen_string_literal: true
+
 require './lib/pieces/piece'
 
-# can only move forward 
+# Pawn piece stores information regarding pawns.
+# - Pawn can only move forward one square.
+# - Pawn can only capture diagonally.
+# - Promotion: When a pawn reaches the end of the board, it should be allowed promote to a queen, knight, or rook.
+# - En-passant: If enemy pawn moves two squares on first move,
+#   pawn may capture enemy pawn if enemy passed over a capturing square.
 class Pawn < Piece
   def initialize
     super

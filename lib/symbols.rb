@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Unicode symbols for board squares and pieces.
 module Symbols
   def square_light
     square_light = "\u25A1"

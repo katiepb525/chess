@@ -3,9 +3,9 @@
 require './lib/pieces/piece'
 require './lib/place'
 
-# knight piece
-# - moves any direction in an L shape
-# - can 'hop' over other pieces
+# Knight piece stores information regarding knights.
+# - Moves any direction in an L shape.
+# - Can 'hop' over other pieces.
 class Knight < Piece
   attr_reader :possible_directions
 

@@ -2,6 +2,8 @@
 
 require './lib/pieces/piece'
 
+# Bishop class stores information regarding bishops.
+# - Can move as far as possible in any diagonal direction.
 class Bishop < Piece
   def initialize
     super
