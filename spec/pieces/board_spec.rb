@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/board'
+
 describe Board do
   context 'upon initialization' do
     subject(:board) { described_class.new }

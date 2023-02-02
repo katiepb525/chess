@@ -2,8 +2,8 @@
 
 require './lib/pieces/piece'
 
-# Queen piece stores information regarding queens.
-# - Can move as far as possible in any straight or diagonal direction
+# Queen class stores information regarding queens.
+# - Can move as far as possible in any straight or diagonal direction.
 class Queen < Piece
   attr_reader :possible_directions_diag, :possible_directions_straight
 

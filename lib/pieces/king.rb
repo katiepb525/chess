@@ -2,7 +2,7 @@
 
 require './lib/pieces/piece'
 
-# King piece stores information regarding kings.
+# King class stores information regarding kings.
 # - May move one square in any direction.
 # - Is not allowed to make a move that would put itself in check or checkmate.
 class King < Piece

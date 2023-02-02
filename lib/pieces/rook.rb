@@ -2,7 +2,7 @@
 
 require './lib/pieces/piece'
 
-# Rook piece stores information regarding rooks.
+# Rook class stores information regarding rooks.
 # - Can move as far as possible in any straight direction.
 class Rook < Piece
   attr_reader :possible_directions
