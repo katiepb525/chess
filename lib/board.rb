@@ -11,6 +11,8 @@ class Board
   def initialize
     @grid = create_grid
   end
+  
+  private
 
   def light_or_dark_square?(idx)
     return :dark if idx.odd?
