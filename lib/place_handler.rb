@@ -85,12 +85,12 @@ class PlaceHandler
   end
 
   def add_list_x_and_y
-    case curr_direction.x_coord
+    case @curr_direction.x_coord
     when 1, -1
       add_list_iterative(:x)
     end
 
-    case curr_direction.y_coord
+    case @curr_direction.y_coord
     when 1, -1
       add_list_iterative(:y)
     end
