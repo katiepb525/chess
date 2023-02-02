@@ -59,7 +59,7 @@ class PlaceHandler
     end
   end
 
-  def create_list_iterative(axis)
+  def add_list_iterative(axis)
     8.times do |idx|
       @result = []
       mark_axis(axis, idx)
@@ -70,7 +70,7 @@ class PlaceHandler
     end
   end
 
-  def create_list
+  def add_list
     @result = []
     @result.push((@place.x_coord + @curr_direction.x_coord))
     @result.push((@place.y_coord + @curr_direction.y_coord))
@@ -85,7 +85,7 @@ class PlaceHandler
     possible_directions.each do |direction|
       curr_to_place = Place.new(direction[0], direction[1])
       @curr_direction = curr_to_place
-      create_list_x_and_y
+      add_list_x_and_y
     end
   end
 
@@ -94,7 +94,7 @@ class PlaceHandler
     possible_directions.each do |direction|
       curr_to_place = Place.new(direction[0], direction[1])
       @curr_direction = curr_to_place
-      create_list_iterative(:xy)
+      add_list_iterative(:xy)
     end
   end
 
@@ -103,7 +103,8 @@ class PlaceHandler
     possible_directions.each do |direction|
       curr_to_place = Place.new(direction[0], direction[1])
       @curr_direction = curr_to_place
-      create_list
+      add_list
     end
   end
 end
+ 
