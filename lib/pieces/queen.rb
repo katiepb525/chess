@@ -16,18 +16,9 @@ class Queen < Piece
 
   # generate list of legal moves from single place
   def legal_moves(place)
-    place_handler = PlaceHandler.new(place)
-    possible_directions_straight.each do |curr_direction|
-      curr_to_place = Place.new(curr_direction[0], curr_direction[1])
-      place_handler.curr_direction = curr_to_place
-      place_handler.mark_x_and_y_axis
-    end
-
-    possible_directions_diag.each do |curr_direction|
-      curr_to_place = Place.new(curr_direction[0], curr_direction[1])
-      place_handler.curr_direction = curr_to_place
-      place_handler.mark_all_diagonals
-    end
+    place_handler = PlaceHandler.new
+    place_handler.create_legal_moveset_straight(@possible_directions_diag, place)
+    place_handler.create_legal_moveset_diag(@possible_directions_straight, place)
     place_handler.list
   end
 end
