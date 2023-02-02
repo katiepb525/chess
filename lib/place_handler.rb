@@ -12,8 +12,10 @@ class PlaceHandler
     @list = []
   end
 
-  def coordinate_invalid?(result)
-    result[0] >= 8 || result[1] >= 8 || result[0].negative? || result[1].negative?
+  def coordinate_invalid?
+    result_x = @result[0]
+    result_y = @result[1]
+    result_x >= 8 || result_y >= 8 || result_x.negative? || result_y.negative?
   end
 
   def push_negative_or_positive?(place, curr_direction, idx)
