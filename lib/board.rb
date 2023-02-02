@@ -1,9 +1,31 @@
 # frozen_string_literal: true
+require './lib/place'
 
 class Board
   attr_accessor :grid
 
   def initialize
-    @grid = Array.new(8) { Array.new(8) { 0 } }
+    @grid = create_grid
+  end
+
+  def light_or_dark_square?(idx)
+    return :dark if idx.odd?
+
+    idx.even?
+    :light
+  end
+
+  def create_grid
+    grid = Array.new(8) { Array.new(8) { 'O' } }
+
+    grid.each_with_index do |row, row_idx|
+      row.each_with_index.map do |_, column_idx|
+        grid[row_idx][column_idx] = Place.new(row_idx, column_idx, light_or_dark_square?(column_idx))
+        grid[row_idx][column_idx].update_symbol
+      end
+    end
   end
 end
+
+# board = Board.new
+# p board.grid
