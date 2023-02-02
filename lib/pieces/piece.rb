@@ -12,6 +12,10 @@ class Piece
     @color = color
   end
 
+  def to_dark_color
+    @color = :dark
+  end
+
   def legal_moves
     "Oops, this object does not define it's legal_moves."
   end
