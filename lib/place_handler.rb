@@ -5,11 +5,11 @@ class PlaceHandler
   attr_reader :place
   attr_accessor :curr_direction, :result, :list
 
-  def initialize(place = nil, curr_direction = nil, result = [], list = [])
+  def initialize(place = nil, curr_direction = nil)
     @place = place
     @curr_direction = curr_direction
-    @result = result
-    @list = list
+    @result = []
+    @list = []
   end
 
   def coordinate_invalid?(result)
