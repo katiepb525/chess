@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/board'
 describe Board do
   context 'upon initialization' do
@@ -10,6 +12,5 @@ describe Board do
     it 'has a light square in the bottom right corner' do
       expect(board.grid[7][0].color_square).to be(:light)
     end
-
   end
 end
