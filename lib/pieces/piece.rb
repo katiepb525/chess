@@ -5,8 +5,11 @@ require './lib/place_handler'
 
 # Parent class initalizing necessary methods/instance variables and dependencies.
 class Piece
-  def initialize
+  attr_reader :color
+
+  def initialize(color = :light)
     @possible_directions = nil
+    @color = color
   end
 
   def legal_moves
