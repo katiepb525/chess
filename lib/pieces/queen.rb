@@ -17,8 +17,8 @@ class Queen < Piece
   # generate list of legal moves from single place
   def legal_moves(place)
     place_handler = PlaceHandler.new
-    place_handler.create_legal_moveset_straight(@possible_directions_diag, place)
-    place_handler.create_legal_moveset_diag(@possible_directions_straight, place)
+    place_handler.create_legal_moveset_straight(@possible_directions_straight, place)
+    place_handler.create_legal_moveset_diag(@possible_directions_diag, place)
     place_handler.list
   end
 end
