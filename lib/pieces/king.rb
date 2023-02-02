@@ -14,9 +14,10 @@ class King < Piece
   def legal_moves(place)
     place_handler = PlaceHandler.new
     place_handler.create_legal_moveset(@possible_directions, place)
+    place_handler.list
   end
 end
 
-place = Place.new(3, 3)
-king = King.new
-p king.legal_moves(place)
+# place = Place.new(3, 3)
+# king = King.new
+# p king.legal_moves(place)
