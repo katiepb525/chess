@@ -25,62 +25,77 @@ class PlaceHandler
     end
   end
 
-  def mark_x_axis
-    8.times do |idx|
-      result = []
-      result.push(push_negative_or_positive?(place.x_coord, curr_direction.x_coord, idx))
-      result.push((place.y_coord + curr_direction.y_coord))
-      next if coordinate_invalid?(result)
-
-      new_place = Place.new(result[0], result[1])
-      list.push(new_place)
-    end
-  end
-
-  def mark_y_axis
-    8.times do |idx|
-      result = []
-      result.push(place.x_coord + curr_direction.x_coord)
-      result.push(push_negative_or_positive?(place.y_coord, curr_direction.y_coord, idx))
-      next if coordinate_invalid?(result)
-
-      new_place = Place.new(result[0], result[1])
-      list.push(new_place)
-    end
-  end
-
-  def mark_x_and_y_axis
+  def create_list_x_and_y
     case curr_direction.x_coord
     when 1, -1
-      mark_x_axis
+      create_list_iterative(:x)
     end
 
     case curr_direction.y_coord
     when 1, -1
-      mark_y_axis
+      create_list_iterative(:y)
     end
   end
 
-  def mark_all_diagonals
-    8.times do |idx|
-      result = []
-      result.push(push_negative_or_positive?(place.x_coord, curr_direction.x_coord, idx))
-      result.push(push_negative_or_positive?(place.y_coord, curr_direction.y_coord, idx))
-      next if coordinate_invalid?(result) || result == [place.x_coord, place.y_coord]
+  def mark_axis(axis, idx)
 
-      new_place = Place.new(result[0], result[1])
-      list.push(new_place)
+    curr_direction_x_coord = @curr_direction.x_coord
+    curr_direction_y_coord = @curr_direction.y_coord
+    place_x_coord = @place.x_coord
+    place_y_coord = @place.y_coord
+    
+    case axis
+    when :x
+      @result.push(push_negative_or_positive?(place_x_coord, curr_direction_x_coord, idx))
+      @result.push((place_y_coord + curr_direction_y_coord))
+    when :y
+      @result.push(place_x_coord + curr_direction_x_coord)
+      @result.push(push_negative_or_positive?(place_y_coord, curr_direction_y_coord, idx))
+    when :xy
+      @result.push(push_negative_or_positive?(place_x_coord, curr_direction_x_coord, idx))
+      @result.push(push_negative_or_positive?(place_y_coord, curr_direction_y_coord, idx))
+    end
+  end
+
+  def create_list_iterative(axis)
+    8.times do |idx|
+      @result = []
+      mark_axis(axis, idx)
+      next if coordinate_invalid? || @result == [@place.x_coord, @place.y_coord]
+
+      new_place = Place.new(@result[0], @result[1])
+      @list.push(new_place)
     end
   end
 
   def create_list
-    result = []
-    result.push((place.x_coord + curr_direction.x_coord))
-    result.push((place.y_coord + curr_direction.y_coord))
-    return if coordinate_invalid?(result) || result == [place.x_coord, place.y_coord]
+    @result = []
+    @result.push((@place.x_coord + @curr_direction.x_coord))
+    @result.push((@place.y_coord + @curr_direction.y_coord))
+    return if coordinate_invalid? || @result == [@place.x_coord, @place.y_coord]
 
-    new_place = Place.new(result[0], result[1])
-    list.push(new_place)
+    new_place = Place.new(@result[0], @result[1])
+    @list.push(new_place)
+  end
+
+  def create_legal_moveset_straight(possible_directions, place)
+    @place = place
+    possible_directions.each do |direction|
+      curr_to_place = Place.new(direction[0], direction[1])
+      @curr_direction = curr_to_place
+      create_list_x_and_y
+    end
+    @list
+  end
+
+  def create_legal_moveset_diag(possible_directions, place)
+    @place = place
+    possible_directions.each do |direction|
+      curr_to_place = Place.new(direction[0], direction[1])
+      @curr_direction = curr_to_place
+      create_list_iterative(:xy)
+    end
+    @list
   end
 
   def create_legal_moveset(possible_directions, place)
@@ -90,6 +105,7 @@ class PlaceHandler
       @curr_direction = curr_to_place
       create_list
     end
-    list
+    @list
   end
+
 end
