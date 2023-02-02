@@ -2,18 +2,27 @@
 Command line chess project from TOP.
 
 To do:
+* All pieces:
+  * Refactor #legal_moves to only store information about legal_moves. (Should only have single responsibility.)
+  * Store the piece's color. (Light or dark.)
+* PlaceHandler:
+  * Move #legal_moves calcuations to PlaceHandler class, under different reusable method names. (#mark_l_shape, #mark_all_diagonals, etc.)
+* Rspec tests:
+  * Instead of testing all of the pieces, just create a test for PlaceHandler to make sure it calculates the legal_moves correctly.
+* Board:
+  * Initalize the board with black/white pieces in appropriate places. 
 
-* When a piece returns #legal_moves, figure out exactly how I'd like to return my list of x/y coordinates. (adjacency matrix? adjacency list? linked list with objects?)
-* Write unit tests for knight class.
-  * Write different contexts for #legal_moves.
-* Write unit tests for rook class.
-  * Write different contexts for #legal_moves.
-* Write pawn class.
-  * Write #legal_moves method.
-  * Write conditions for legal capture via forward diagonals.
-  * Write conditions for legal capture via en passant.
-  * Write conditions for promotion.
-* Write queen class.
-  * Write #legal_moves method.
-* Write knight class.
-  * Write #legal_moves method.
+Classes to create:
+* BoardHandler(?):
+  * Create a function that selects a piece from input and moves it to place from input. Make sure it does not allow illegal moves, or replacing present pieces.
+* InputHandler(?):
+  * Manages player input.
+* Player:
+  * Manages information about the player.
+* GameHandler(?):
+  * Plays rounds -- switches between players.
+  * Checks for checkmate and stalemate conditions, ends game.
+  * Saves game state, loads game state.
+
+Other:
+* Privatize methods/functions that dont need to be public.
