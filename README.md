@@ -3,10 +3,10 @@ Command line chess project from TOP.
 
 To do:
 * All pieces:
-  * Refactor #legal_moves to only store information about legal_moves. (Should only have single responsibility.)
-  * Store the piece's color. (Light or dark.)
+  * ~~Refactor #legal_moves to only store information about legal_moves. (Should only have single responsibility.)~~
+  * ~~Store the piece's color. (Light or dark.)~~
 * PlaceHandler:
-  * Move #legal_moves calcuations to PlaceHandler class, under different reusable method names. (#mark_l_shape, #mark_all_diagonals, etc.)
+  * ~~Move #legal_moves calcuations to PlaceHandler class, under different reusable method names. (#mark_l_shape, #mark_all_diagonals, etc.)~~
 * Rspec tests:
   * Instead of testing all of the pieces, just create a test for PlaceHandler to make sure it calculates the legal_moves correctly.
 * Board:
@@ -25,4 +25,4 @@ Classes to create:
   * Saves game state, loads game state.
 
 Other:
-* Privatize methods/functions that dont need to be public.
+* ~~Privatize methods/functions that dont need to be public.~~
