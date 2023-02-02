@@ -14,7 +14,9 @@ class Bishop < Piece
   # generate list of legal moves from single place
   def legal_moves(place)
     place_handler = PlaceHandler.new
-    place_handler.create_legal_moveset_iterative_diag(@possible_directions, place)
+    place_handler.create_legal_moveset_diag(@possible_directions, place)
+    place_handler.list
+
   end
 end
 

@@ -17,7 +17,8 @@ class Rook < Piece
   # generate list of legal moves from single place
   def legal_moves(place)
     place_handler = PlaceHandler.new
-    place_handler.create_legal_moveset_iterative(@possible_directions, place)
+    place_handler.create_legal_moveset_straight(@possible_directions, place)
+    place_handler.list
   end
 end
 

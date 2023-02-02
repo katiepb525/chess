@@ -2,7 +2,7 @@
 
 # Manages creation of legal movesets from coordinates.
 class PlaceHandler
-  attr_reader :place
+  attr_reader :place, :list
   attr_accessor :curr_direction, :result, :list
 
   def initialize(place = nil, curr_direction = nil)
@@ -87,7 +87,6 @@ class PlaceHandler
       @curr_direction = curr_to_place
       create_list_x_and_y
     end
-    @list
   end
 
   def create_legal_moveset_diag(possible_directions, place)
@@ -97,7 +96,6 @@ class PlaceHandler
       @curr_direction = curr_to_place
       create_list_iterative(:xy)
     end
-    @list
   end
 
   def create_legal_moveset(possible_directions, place)
@@ -107,7 +105,5 @@ class PlaceHandler
       @curr_direction = curr_to_place
       create_list
     end
-    @list
   end
-
 end
