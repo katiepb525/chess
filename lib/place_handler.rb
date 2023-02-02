@@ -73,13 +73,23 @@ class PlaceHandler
     end
   end
 
-  def mark_l_shape
+  def create_list
     result = []
     result.push((place.x_coord + curr_direction.x_coord))
     result.push((place.y_coord + curr_direction.y_coord))
-    return if coordinate_invalid?(result)
+    return if coordinate_invalid?(result) || result == [place.x_coord, place.y_coord]
 
     new_place = Place.new(result[0], result[1])
     list.push(new_place)
+  end
+
+  def create_legal_moveset(possible_directions, place)
+    @place = place
+    possible_directions.each do |direction|
+      curr_to_place = Place.new(direction[0], direction[1])
+      @curr_direction = curr_to_place
+      create_list
+    end
+    list
   end
 end
