@@ -57,13 +57,13 @@ class BoardHandler
   end
 end
 
-board_handler = BoardHandler.new
-board_handler.set_up_board
-board_handler.board.grid.each do |row|
-  symb_arr = []
-  row.each do |place|
-    symb_arr.push(place.symbol)
-  end
-  puts "#{symb_arr}\n"
-  symb_arr = []
-end
+# board_handler = BoardHandler.new
+# board_handler.set_up_board
+# board_handler.board.grid.each do |row|
+#   symb_arr = []
+#   row.each do |place|
+#     symb_arr.push(place.symbol)
+#   end
+#   puts "#{symb_arr}\n"
+#   symb_arr = []
+# end
