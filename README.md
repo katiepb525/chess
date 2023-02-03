@@ -5,6 +5,7 @@ To do:
 * All pieces:
   * ~~Refactor #legal_moves to only store information about legal_moves. (Should only have single responsibility.)~~
   * ~~Store the piece's color. (Light or dark.)~~
+  * Figure out how to pass assign_symbol method through inheritence?
 * PlaceHandler:
   * ~~Move #legal_moves calcuations to PlaceHandler class, under different reusable method names. (#mark_l_shape, #mark_all_diagonals, etc.)~~
 * Rspec tests:
