@@ -8,7 +8,6 @@ class Bishop < Piece
   def initialize
     super
     @possible_directions = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
-    @place_handler = nil
   end
 
   # generate list of legal moves from single place
