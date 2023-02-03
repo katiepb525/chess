@@ -13,6 +13,17 @@ class Pawn < Piece
     super
     @possible_directions = [[0, 1]]
     @possible_directions_capture = [[-1, 1], [1, -1]]
+    @symbol = assign_symbol
+  end
+
+  # figure out how to do this from piece class with inheritance
+  def assign_symbol
+    case @color
+    when :light
+      @symbol = pawn_light
+    when :dark
+      @symbol = pawn_dark
+    end
   end
 
   def legal_moves(place)
