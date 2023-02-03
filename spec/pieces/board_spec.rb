@@ -11,7 +11,7 @@ describe Board do
     end
 
     it 'has a light square in the bottom right corner' do
-      expect(board.grid[7][0].color_square).to be(:light)
+      expect(board.grid[7][7].color_square).to be(:light)
     end
   end
 end
