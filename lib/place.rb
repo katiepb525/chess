@@ -5,7 +5,8 @@ require './lib/symbols'
 # Place class stores information regarding the current square or 'place'.
 class Place
   include Symbols
-  attr_reader :x_coord, :y_coord, :color_square
+  attr_reader :x_coord, :y_coord, :color_square, :symbol
+  attr_accessor :current_piece
 
   def initialize(x_coord, y_coord, color_square = nil)
     @x_coord = x_coord
