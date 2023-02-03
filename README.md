@@ -9,6 +9,7 @@ To do:
   * ~~Move #legal_moves calcuations to PlaceHandler class, under different reusable method names. (#mark_l_shape, #mark_all_diagonals, etc.)~~
 * Rspec tests:
   * Instead of testing all of the pieces, just create a test for PlaceHandler to make sure it calculates the legal_moves correctly.
+  * The only pieces that should be tested are ones with special conditions. (Knight should be able to hop, pawn able to promote, etc.)
 * Board:
   * Initalize the board with black/white pieces in appropriate places. 
 
