@@ -58,10 +58,11 @@ class BoardHandler
     assign_piece(y_coord, 4, King.new)
   end
 
-  def assign_piece(x_coord, y_coord, piece)
-    place = @board.grid[x_coord][y_coord]
-    place.current_piece = piece
-    place.update_symbol
+  def change_to_dark(y_coord)
+    @board.grid[y_coord].each do |place|
+      place.current_piece.to_dark_color
+      place.update_symbol
+    end
   end
 end
 
