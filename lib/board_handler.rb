@@ -29,6 +29,14 @@ class BoardHandler
     y_coord = 0
     assign_higher_rank(y_coord + 1)
     assign_lower_rank(y_coord)
+    change_to_dark(y_coord + 1)
+    change_to_dark(y_coord)
+  end
+
+  def assign_piece(x_coord, y_coord, piece)
+    place = @board.grid[x_coord][y_coord]
+    place.current_piece = piece
+    place.update_symbol
   end
 
   def assign_higher_rank(y_coord)

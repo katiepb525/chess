@@ -27,7 +27,16 @@ class Place
 
     return unless square_available? == false
 
-    @symbol = @current_piece.symbol
+    update_piece
+  end
+
+  def update_piece
+    piece_name = @current_piece.class.name.downcase
+    piece_light = (piece_name + '_light').to_sym
+    piece_dark = (piece_name + '_dark').to_sym
+    get_sym_light = send(piece_light)
+    get_sym_dark = send(piece_dark)
+    @symbol = @current_piece.assign_symbol(get_sym_light, get_sym_dark)
   end
 
   def square_available?
