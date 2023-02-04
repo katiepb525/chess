@@ -8,6 +8,7 @@ class Rook < Piece
   def initialize
     super
     @possible_directions = [[1, 0], [0, -1], [0, 1], [-1, 0]].freeze
+    @symbol = assign_symbol(rook_light, rook_dark)
   end
 
   # generate list of legal moves from single place

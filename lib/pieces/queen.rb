@@ -9,6 +9,7 @@ class Queen < Piece
     super
     @possible_directions_diag = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
     @possible_directions_straight = [[1, 0], [0, -1], [0, 1], [-1, 0]].freeze
+    @symbol = assign_symbol(queen_light, queen_dark)
   end
 
   # generate list of legal moves from single place

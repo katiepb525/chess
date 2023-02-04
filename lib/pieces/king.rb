@@ -9,6 +9,7 @@ class King < Piece
   def initialize
     super
     @possible_directions = [[1, 0], [-1, 0], [0, -1], [0, 1], [-1, 1], [1, 1], [-1, -1], [1, -1]]
+    @symbol = assign_symbol(king_light, king_dark)
   end
 
   def legal_moves(place)

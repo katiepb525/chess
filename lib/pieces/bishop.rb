@@ -8,6 +8,7 @@ class Bishop < Piece
   def initialize
     super
     @possible_directions = [[1, -1], [-1, 1], [-1, -1], [1, 1]].freeze
+    @symbol = assign_symbol(bishop_light, bishop_dark)
   end
 
   # generate list of legal moves from single place

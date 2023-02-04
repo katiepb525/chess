@@ -9,6 +9,7 @@ class Knight < Piece
   def initialize
     super
     @possible_directions = [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]].freeze
+    @symbol = assign_symbol(knight_light, knight_dark)
   end
 
   # generate list of legal moves from a single place
