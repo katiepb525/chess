@@ -16,6 +16,15 @@ class Piece
     @symbol = nil
   end
 
+  def assign_symbol(sym1, sym2)
+    case @color
+    when :light
+      @symbol = sym1
+    when :dark
+      @symbol = sym2
+    end
+  end
+
   def to_dark_color
     @color = :dark
   end
