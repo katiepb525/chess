@@ -3,7 +3,7 @@ class Player
   attr_reader :name, :player_num, :light_or_dark
   attr_accessor :raw_input
 
-  def initialize(name, player_num)
+  def initialize(player_num, name = nil)
     @name = name
     @player_num = player_num
     @light_or_dark = light_or_dark_pieces?
