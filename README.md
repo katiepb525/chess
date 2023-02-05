@@ -12,6 +12,7 @@ To do:
   * Instead of testing all of the pieces, just create a test for PlaceHandler to make sure it calculates the legal_moves correctly.
   * The only pieces that should be tested are ones with special conditions. (Knight should be able to hop, pawn able to promote, etc.)
   * Test BoardHandler to make sure it initalizes the board correctly.
+  * Test BoardHandler to make sure it moves pieces correctly.
 * Board:
   * Correct incorrect assignment of squares.
 
