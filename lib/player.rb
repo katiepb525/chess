@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Stores information about a player instance.
 class Player
   attr_reader :name, :player_num, :light_or_dark

@@ -1,4 +1,6 @@
-# Manages aspects concerning rounds, game rules, checkmate/stalemate conditions, saving and loading game. 
+# frozen_string_literal: true
+
+# Manages aspects concerning rounds, game rules, checkmate/stalemate conditions, saving and loading game.
 # (Might be too many responsibilites, though.)
 class GameHandler
   def initialize

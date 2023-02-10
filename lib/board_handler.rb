@@ -1,4 +1,6 @@
-Dir['./lib/pieces/*.rb'].each { |file| require file }
+# frozen_string_literal: true
+
+Dir['./lib/pieces/*.rb'].sort.each { |file| require file }
 require './lib/board'
 require './lib/input_handler'
 require 'pry-byebug'
