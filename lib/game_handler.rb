@@ -16,7 +16,7 @@ class GameHandler
   end
 
   def get_player_name(player)
-    ask_player_name(player)
+    puts ask_player_name(player)
     input = gets.chomp
     player.name = input
   end
@@ -29,4 +29,26 @@ class GameHandler
       @player2
     end
   end
+
+  def start_game
+    puts intro_display
+    get_player_name(@player1)
+    get_player_name(@player2)
+    set_up_game
+  end
+
+  def set_up_game
+    @board_handler.set_up_board
+    play_game
+  end
+
+  def play_game
+    current_player = play_round
+    display_board(@board_handler)
+    puts ask_input(current_player)
+    current_player.raw_input = gets.chomp
+  end
 end
+
+game = GameHandler.new
+game.start_game
