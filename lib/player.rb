@@ -12,6 +12,8 @@ class Player
     @raw_input = nil
   end
 
+  private
+  
   def light_or_dark_pieces?
     case @num
     when 1
