@@ -17,7 +17,7 @@ module Display
   end
 
   def ask_input(player)
-    "Player #{player.num}, enter your move.\n
+    "Player #{player.name}, enter your move.\n
     You can specify your desired piece first, then move,\n
     or you can type both a single string, e.g. d2d3.\n"
   end
