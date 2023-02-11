@@ -49,6 +49,8 @@ class GameHandler
     display_board(@board_handler)
     puts ask_input(current_player)
     current_player.raw_input = gets.chomp
+    @board_handler.move_piece(current_player.raw_input)
+    display_board(@board_handler)
   end
 end
 
