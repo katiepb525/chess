@@ -49,7 +49,7 @@ class InputHandler
     when 4
       coordinates[:x_coord] = file_to_coordinate(@notation[0])
       coordinates[:y_coord] = rank_to_coordinate(@notation[1])
-      @chosen_place = coordinates.clone
+      @chosen_piece = coordinates.clone
       coordinates.clear
       coordinates[:x_coord] = file_to_coordinate(@notation[2])
       coordinates[:y_coord] = rank_to_coordinate(@notation[3])
