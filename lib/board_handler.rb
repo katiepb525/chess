@@ -3,7 +3,6 @@
 Dir['./lib/pieces/*.rb'].sort.each { |file| require file }
 require './lib/board'
 require './lib/input_handler'
-require 'pry-byebug'
 
 # Manages and updates information pertaining to the board.
 class BoardHandler
