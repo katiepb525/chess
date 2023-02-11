@@ -14,11 +14,18 @@ class Board
 
   private
 
-  def light_or_dark_square?(idx)
-    return :dark if idx.even?
+  def light_or_dark_square?(column_idx, row_idx)
+    if row_idx.even?
+      return :light if column_idx.even?
 
-    idx.odd?
-    :light
+      column_idx.odd?
+      :dark
+    elsif row_idx.odd?
+      return :dark if column_idx.even?
+
+      column_idx.odd?
+      :light
+    end
   end
 
   def create_grid
@@ -26,7 +33,7 @@ class Board
 
     grid.each_with_index do |row, row_idx|
       row.each_with_index.map do |_, column_idx|
-        grid[row_idx][column_idx] = Place.new(row_idx, column_idx, light_or_dark_square?(column_idx))
+        grid[row_idx][column_idx] = Place.new(row_idx, column_idx, light_or_dark_square?(column_idx, row_idx))
         grid[row_idx][column_idx].update_symbol
       end
     end
