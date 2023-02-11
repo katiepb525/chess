@@ -2,18 +2,18 @@
 
 # Stores information about a player instance.
 class Player
-  attr_reader :player_num, :light_or_dark
+  attr_reader :num, :light_or_dark
   attr_accessor :raw_input, :name
 
-  def initialize(player_num)
+  def initialize(num)
     @name = name
-    @player_num = player_num
+    @num = num
     @light_or_dark = light_or_dark_pieces?
     @raw_input = nil
   end
 
   def light_or_dark_pieces?
-    case @player_num
+    case @num
     when 1
       :light
     when 2
