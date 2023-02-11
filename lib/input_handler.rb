@@ -19,7 +19,7 @@ class InputHandler
   # Player can select a piece and move it in two inputs 'g4' 'd2'
   # Player can select a piece and move in it one string 'g4d2'
   def notation_is_valid?
-    @notation.length == 2 && @notation.length == 4
+    @notation.length == 2 || @notation.length == 4
     case @notation.length
     when 2
       FILES.include?(@notation[0])
