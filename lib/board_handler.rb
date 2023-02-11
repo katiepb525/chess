@@ -10,11 +10,27 @@ class BoardHandler
 
   def initialize
     @board = Board.new
+    @input_handler = InputHandler.new
   end
 
   def set_up_board
     set_up_light_pieces
     set_up_dark_pieces
+  end
+
+  def move_piece(raw_input)
+    @input_handler.notation = raw_input
+    @input_handler.notation_to_coordinates
+    piece_to_move = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
+    piece_to_move_clone = piece_to_move.clone
+    place_to_move_to = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
+    # check if move is legal??
+    binding.pry
+    piece_to_move.current_piece = nil
+    piece_to_move.update_symbol
+    place_to_move_to.current_piece = piece_to_move_clone.current_piece
+    place_to_move_to.update_symbol
+
   end
 
   private
