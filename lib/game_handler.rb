@@ -15,6 +15,15 @@ class GameHandler
     @board_handler = BoardHandler.new
   end
 
+  def start_game
+    puts intro_display
+    get_player_name(@player1)
+    get_player_name(@player2)
+    set_up_game
+  end
+
+  private
+
   def get_player_name(player)
     puts ask_player_name(player)
     input = gets.chomp
@@ -28,13 +37,6 @@ class GameHandler
     else
       @player2
     end
-  end
-
-  def start_game
-    puts intro_display
-    get_player_name(@player1)
-    get_player_name(@player2)
-    set_up_game
   end
 
   def set_up_game
