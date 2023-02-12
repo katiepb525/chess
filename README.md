@@ -14,7 +14,7 @@ To do:
   * Test BoardHandler to make sure it initalizes the board correctly.
   * Test BoardHandler to make sure it moves pieces correctly.
 * Board:
-  * Correct incorrect assignment of squares.
+  * ~~Correct incorrect assignment of squares.~~
 
 Classes to create:
 * DisplayHandler:
@@ -32,7 +32,7 @@ Classes to create:
   * ~~Manages information about the player.~~
   * Should be responsible for getting player input and passing off to InputHandler.
 * GameHandler(?):
-  * Plays rounds -- switches between players.
+  * ~~Plays rounds -- switches between players.~~
   * Checks for checkmate and stalemate conditions, ends game.
   * Saves game state, loads game state.
 
