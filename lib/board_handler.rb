@@ -25,12 +25,10 @@ class BoardHandler
     piece_to_move_clone = piece_to_move.clone
     place_to_move_to = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
     # check if move is legal??
-    binding.pry
     piece_to_move.current_piece = nil
     piece_to_move.update_symbol
     place_to_move_to.current_piece = piece_to_move_clone.current_piece
     place_to_move_to.update_symbol
-
   end
 
   private

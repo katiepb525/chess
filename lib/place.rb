@@ -31,7 +31,7 @@ class Place
   end
 
   private
-  
+
   def update_piece
     piece_name = @current_piece.class.name.downcase
     piece_light = "#{piece_name}_light".to_sym

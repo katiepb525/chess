@@ -13,7 +13,7 @@ class Player
   end
 
   private
-  
+
   def light_or_dark_pieces?
     case @num
     when 1

@@ -20,7 +20,7 @@ describe BoardHandler do
       expect(top_right_place.current_piece.color).to eq(:dark)
     end
 
-    it 'places light rooks in correct spots' do 
+    it 'places light rooks in correct spots' do
       bottom_left_place = board_handler.board.grid[7][0]
       bottom_right_place = board_handler.board.grid[7][7]
 
