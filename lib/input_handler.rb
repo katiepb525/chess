@@ -61,11 +61,11 @@ class InputHandler
     end
   end
 
-  def file_to_coordinate(notation_idx)
-    7 - FILES.index(notation_idx) # because files are picked from bottom-up on board
-  end
-
   def rank_to_coordinate(notation_idx)
     RANKS.index(notation_idx)
+  end
+
+  def file_to_coordinate(notation_idx)
+    7 - FILES.index(notation_idx) # because files are picked from bottom-up on board
   end
 end
