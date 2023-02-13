@@ -5,8 +5,8 @@ class InputHandler
   attr_reader :chosen_piece, :chosen_place
   attr_accessor :notation
 
-  FILES = %w[a b c d e f g h].freeze
-  RANKS = %w[1 2 3 4 5 6 7 8].freeze
+   RANKS = %w[a b c d e f g h].freeze
+   FILES = %w[1 2 3 4 5 6 7 8].freeze
 
   def initialize
     @notation = nil
