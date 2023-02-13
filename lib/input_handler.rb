@@ -47,14 +47,14 @@ class InputHandler
     @notation.length == 2 || @notation.length == 4
     case @notation.length
     when 2
-      FILES.include?(@notation[0])
-      RANKS.include?(@notation[1])
+      FILES.include?(@notation[1])
+      RANKS.include?(@notation[0])
       @notation[0..1] != @chosen_piece # should throw an error when triggered
     when 4
-      FILES.include?(@notation[0])
-      RANKS.include?(@notation[1])
-      FILES.include?(@notation[2])
-      RANKS.include?(@notation[3])
+      FILES.include?(@notation[1])
+      RANKS.include?(@notation[0])
+      FILES.include?(@notation[3])
+      RANKS.include?(@notation[2])
       @notation[0..1] != @notation[2..3] # should throw an error when triggered
     else
       false
