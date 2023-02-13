@@ -25,12 +25,16 @@ class InputHandler
       coordinates[:y_coord] = rank_to_coordinate(@notation[1])
       @chosen_piece.nil? ? @chosen_piece = coordinates : @chosen_place = coordinates
     when 4
-      coordinates[:x_coord] = file_to_coordinate(@notation[0])
-      coordinates[:y_coord] = rank_to_coordinate(@notation[1])
+      curr_file_1 = notation[1]
+      curr_rank_1 = notation[0]
+      curr_file_2 = notation[3]
+      curr_rank_2 = notation[2]
+      coordinates[:x_coord] = file_to_coordinate(curr_file_1)
+      coordinates[:y_coord] = rank_to_coordinate(curr_rank_1)
       @chosen_piece = coordinates.clone
       coordinates.clear
-      coordinates[:x_coord] = file_to_coordinate(@notation[2])
-      coordinates[:y_coord] = rank_to_coordinate(@notation[3])
+      coordinates[:x_coord] = file_to_coordinate(curr_file_2)
+      coordinates[:y_coord] = rank_to_coordinate(curr_rank_2)
       @chosen_place = coordinates.clone
     end
   end
