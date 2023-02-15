@@ -28,7 +28,7 @@ module Display
       row.each do |place|
         symb_arr.push(place.symbol)
       end
-      puts "#{8 - (idx)} #{symb_arr.join(' ')}"
+      puts "#{8 - idx} #{symb_arr.join(' ')}"
       symb_arr = []
     end
     puts "  #{%w[a b c d e f g h].join(' ')}"
