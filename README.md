@@ -38,3 +38,4 @@ Classes to create:
 
 Other:
 * ~~Privatize methods/functions that dont need to be public.~~
+* Fix law of demeter violations. (Some weird chaining going on with my methods.)
