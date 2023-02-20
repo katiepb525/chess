@@ -33,7 +33,9 @@ class Board
 
     grid.each_with_index do |row, row_idx|
       row.each_with_index.map do |_, column_idx|
-        grid[row_idx][column_idx] = Place.new(row_idx, column_idx, light_or_dark_square?(column_idx, row_idx))
+        grid[row_idx][column_idx] = Place.new(column_idx, row_idx, light_or_dark_square?(column_idx, row_idx)) 
+        # because its an adjacency matrix, 
+        # you have to access spots on the grid with the y coord first. e.g. grid[y_coord][x_coord]
         grid[row_idx][column_idx].update_symbol
       end
     end
