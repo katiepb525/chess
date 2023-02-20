@@ -53,14 +53,15 @@ describe BoardHandler do
       end
     end
 
-    context 'with illegal notation' do
-      it 'throws an error message' do
+    context 'with invalid input' do
+      before do
+        place_of_piece_to_move.current_piece = pawn
+      end
+
+      it 'raises an error' do
+        raw_input = 'gggg'
+        expect{ board_handler.move_piece(raw_input) }.to raise_error(RuntimeError, 'Input is invalid')
       end
     end
   end
-
-  # it 'allows knight movement within legal bounds' do
-
-  # end
-
 end
