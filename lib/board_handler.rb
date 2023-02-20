@@ -41,7 +41,9 @@ class BoardHandler
     rescue NoMethodError
       raise 'Input is invalid'
     end
-    # check if move is legal??
+    # check if move is legal
+    raise 'Move is illegal' unless ok_to_move_to?(piece_to_move, place_to_move_to)
+
     piece_to_move.current_piece = nil
     piece_to_move.update_symbol
     place_to_move_to.current_piece = piece_to_move_clone.current_piece
