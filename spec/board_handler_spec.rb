@@ -34,11 +34,11 @@ describe BoardHandler do
   end
 
   describe '#move_piece' do
-    context 'with legal notation' do
-      let(:pawn) { double('Pawn')}
-      let(:place_of_piece_to_move) { board_handler.board.grid[6][3] }
-      let(:place_to_move_to) {board_handler.board.grid[5][3]}
+    let(:pawn) { double('Pawn')}
+    let(:place_of_piece_to_move) { board_handler.board.grid[6][3] }
+    let(:place_to_move_to) {board_handler.board.grid[5][3]}
 
+    context 'with legal notation' do
       before do
         place_of_piece_to_move.current_piece = pawn
         raw_input = 'd2d3'
