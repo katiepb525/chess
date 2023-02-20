@@ -18,6 +18,19 @@ class BoardHandler
     set_up_dark_pieces
   end
 
+  def is_legal_move?(curr_place, place_to_move_to)
+    curr_piece = curr_place.current_piece
+    legal_moves_of_piece = curr_piece.legal_moves(curr_place)
+    legal_moves_of_piece.each do |legal_move|
+      return true if legal_move.x_coord == place_to_move_to.x_coord && legal_move.y_coord == place_to_move_to.y_coord
+    end
+    false
+  end
+
+  def ok_to_move_to?(curr_place, place_to_move_to)
+    place_to_move_to.square_available? && is_legal_move?(curr_place, place_to_move_to)
+  end
+
   def move_piece(raw_input)
     @input_handler.notation = raw_input
     @input_handler.notation_to_coordinates

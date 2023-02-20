@@ -30,6 +30,10 @@ class Place
     update_piece
   end
 
+  def square_available?
+    @current_piece.nil?
+  end
+  
   private
 
   def update_piece
@@ -41,7 +45,4 @@ class Place
     @symbol = @current_piece.assign_symbol(get_sym_light, get_sym_dark)
   end
 
-  def square_available?
-    @current_piece.nil?
-  end
 end
