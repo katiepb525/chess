@@ -63,5 +63,20 @@ describe BoardHandler do
         expect{ board_handler.move_piece(raw_input) }.to raise_error(RuntimeError, 'Input is invalid')
       end
     end
+
+    context 'with an illegal move' do
+      let(:place_of_piece_to_move) { board_handler.board.grid[6][3] }
+      let(:place_to_move_to) { board_handler.board.grid[3][3] }
+
+      before do
+        place_of_piece_to_move.current_piece = pawn
+        expect(place_of_piece_to_move).to receive(:update_symbol)
+        expect(place_to_move_to).to receive(:update_symbol)
+      end
+      it 'raises an error' do
+        raw_input = 'd2d5'
+        expect{ board_handler.move_piece(raw_input) }.to raise_error(StandardError, 'Move is illegal')
+      end
+    end
   end
 end
