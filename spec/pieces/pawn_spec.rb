@@ -10,7 +10,7 @@ describe Pawn do
 
       it 'returns only possible move (forward)' do
         result = pawn.legal_moves(place)
-        expect([result[0].x_coord, result[0].y_coord]).to eq([3, 4])
+        expect([result[0].x_coord, result[0].y_coord]).to eq([3, 2])
       end
     end
   end
