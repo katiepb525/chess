@@ -11,7 +11,7 @@ require './lib/pieces/piece'
 class Pawn < Piece
   def initialize
     super
-    @possible_directions = [[0, 1]]
+    @possible_directions = [[0, -1]]
     @possible_directions_capture = [[-1, 1], [1, -1]]
     @symbol = assign_symbol(pawn_light, pawn_dark)
   end
