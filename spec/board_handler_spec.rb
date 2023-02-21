@@ -34,16 +34,17 @@ describe BoardHandler do
   end
 
   describe '#move_piece' do
-    let(:pawn) { double('Pawn')}
+    let(:pawn) { double('Pawn') }
     let(:place_of_piece_to_move) { board_handler.board.grid[6][3] }
-    let(:place_to_move_to) {board_handler.board.grid[5][3]}
-
+    let(:place_to_move_to) { board_handler.board.grid[5][3] }
+    let(:pawn_legal_move) {[double('Place', x_coord: 3, y_coord: 5)]}
     context 'with legal notation' do
       before do
         place_of_piece_to_move.current_piece = pawn
         raw_input = 'd2d3'
         expect(place_of_piece_to_move).to receive(:update_symbol)
         expect(place_to_move_to).to receive(:update_symbol)
+        allow(pawn).to receive(:legal_moves).with(place_of_piece_to_move).and_return(pawn_legal_move)
         board_handler.move_piece(raw_input)
       end
 
@@ -60,7 +61,7 @@ describe BoardHandler do
 
       it 'raises an error' do
         raw_input = 'gggg'
-        expect{ board_handler.move_piece(raw_input) }.to raise_error(RuntimeError, 'Input is invalid')
+        expect { board_handler.move_piece(raw_input) }.to raise_error(RuntimeError, 'Input is invalid')
       end
     end
 
@@ -70,12 +71,11 @@ describe BoardHandler do
 
       before do
         place_of_piece_to_move.current_piece = pawn
-        expect(place_of_piece_to_move).to receive(:update_symbol)
-        expect(place_to_move_to).to receive(:update_symbol)
+        allow(pawn).to receive(:legal_moves).with(place_of_piece_to_move).and_return(pawn_legal_move)
       end
       it 'raises an error' do
         raw_input = 'd2d5'
-        expect{ board_handler.move_piece(raw_input) }.to raise_error(StandardError, 'Move is illegal')
+        expect { board_handler.move_piece(raw_input) }.to raise_error(StandardError, 'Move is illegal')
       end
     end
   end
