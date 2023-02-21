@@ -14,6 +14,7 @@ class Piece
     @possible_directions = nil
     @color = color
     @symbol = nil
+    @can_hop = false
   end
 
   def assign_symbol(sym1, sym2)
