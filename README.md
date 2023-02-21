@@ -11,13 +11,14 @@ To do:
     * Update rspec tests to reflect this as well.
 * BoardHandler:
   * Test BoardHandler to make sure it initalizes the board correctly.
+  * Fix all moves being allowed to hop over pieces.
 * InputHandler:
   * ~~Manages player input.~~
   * Write tests to determine it is returning correctly parsed input.
   * ~~Catches bad input~~ ~~and sends message to GameHandler and BoardHandler.~~ (instead of sending multiple messages, decided to use error handling)
 * Player:
   * ~~Manages information about the player.~~
-  * Should be responsible for getting player input and passing off to InputHandler.
+  * ~~Should be responsible for getting player input and passing off to InputHandler.~~
 * GameHandler:
   * ~~Plays rounds -- switches between players.~~
   * Saves game state, loads game state.
@@ -28,6 +29,9 @@ To do:
   * If King is in check, sends message.
 * CheckmateFinder:
   * Looks for checkmate conditions.
+    * Is in check.
+    * King cannot move out of danger.
+    * King cannot capture threatening piece.
 * StalemateFinder:
   * If the board state of the game repeats itself three times, sends message of stalemate.
 
