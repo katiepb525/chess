@@ -18,8 +18,7 @@ module Display
 
   def ask_input(player)
     "Player #{player.name}, enter your move.\n
-    You can specify your desired piece first, then move,\n
-    or you can type both a single string, e.g. d2d3.\n"
+    Please type single string, e.g. d2d3.\n"
   end
 
   def display_board(board_handler)

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 # Manages player input.
+# I have written some functionality for a process like 'd2' then a prompt,
+# followed by 'd3' to be acceptable way of entering input. I've commented it out
+# for now since its not a necessary feature for the functionality of the game.
 class InputHandler
   attr_reader :chosen_piece, :chosen_place
   attr_accessor :notation
@@ -20,10 +23,10 @@ class InputHandler
 
     coordinates = { x_coord: nil, y_coord: nil }
     case @notation.length
-    when 2
-      coordinates[:x_coord] = file_to_coordinate(@notation[0])
-      coordinates[:y_coord] = rank_to_coordinate(@notation[1])
-      @chosen_piece.nil? ? @chosen_piece = coordinates : @chosen_place = coordinates
+    # when 2
+    #   coordinates[:x_coord] = file_to_coordinate(@notation[0])
+    #   coordinates[:y_coord] = rank_to_coordinate(@notation[1])
+    #   @chosen_piece.nil? ? @chosen_piece = coordinates : @chosen_place = coordinates
     when 4
       curr_file_1 = notation[1]
       curr_rank_1 = notation[0]
@@ -46,10 +49,10 @@ class InputHandler
   def notation_is_valid?
     @notation.length == 2 || @notation.length == 4
     case @notation.length
-    when 2
-      FILES.include?(@notation[1])
-      RANKS.include?(@notation[0])
-      @notation[0..1] != @chosen_piece # should throw an error when triggered
+    # when 2
+    #   FILES.include?(@notation[1])
+    #   RANKS.include?(@notation[0])
+    #   @notation[0..1] != @chosen_piece # should throw an error when triggered
     when 4
       FILES.include?(@notation[1])
       RANKS.include?(@notation[0])
