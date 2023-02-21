@@ -7,7 +7,7 @@ require './lib/place_handler'
 # Parent class initalizing necessary methods/instance variables and dependencies.
 class Piece
   include Symbols
-  attr_reader :color
+  attr_reader :color, :can_hop
   attr_accessor :symbol
 
   def initialize(color = :light)
