@@ -18,7 +18,7 @@ class BoardHandler
     set_up_dark_pieces
   end
 
-  def is_legal_move?(curr_place, place_to_move_to)
+  def is_legal_move?(curr_place, place_to_move_to) # There is some data coupling here maybe I should move into an instance var.
     curr_piece = curr_place.current_piece
     legal_moves_of_piece = curr_piece.legal_moves(curr_place)
     legal_moves_of_piece.each do |legal_move|
@@ -27,8 +27,11 @@ class BoardHandler
     false
   end
 
-  def ok_to_move_to?(curr_place, place_to_move_to)
-    place_to_move_to.square_available? && is_legal_move?(curr_place, place_to_move_to)
+  def ok_to_move_to?(curr_place, place_to_move_to) # Same here.
+    # Should change according to if it can_hop.
+    # case curr_place.current_piece.can_hop
+    # when false
+    place_to_move_to.square_available? && is_legal_move?(curr_place, place_to_move_to) # && piece_in_way? == false (if can_hop value is false)
   end
 
   def move_piece(raw_input)

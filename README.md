@@ -2,6 +2,8 @@
 Command line chess project from TOP.
 
 To do:
+* PlaceHandler
+  * Refactor legal_moves to get places from the actual board, not newly instantiated places.
 * Rspec tests:
   ~~* Instead of testing all of the pieces, just create a test for PlaceHandler to make sure it calculates the legal_moves correctly.~~ Well, we want to keep information seperate, but still test methods in PlaceHandler.
   * The only pieces that should be tested are ones with special conditions. (Knight should be able to hop, pawn able to promote, etc.)
