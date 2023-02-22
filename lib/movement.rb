@@ -52,7 +52,7 @@ class Movement
     # Should change according to if it can_hop.
     # case curr_place.current_piece.can_hop
     # when false
-    @end_place.square_available? && legal_move?(@start_place, @end_place) # && path_clear? (if can_hop value is false)
+    @end_place.square_available? && legal_move? # && path_clear? (if can_hop value is false)
   end
 
   def path_clear?
