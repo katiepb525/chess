@@ -3,6 +3,7 @@
 require './lib/board_handler'
 require './lib/display'
 require './lib/player'
+require './lib/movement'
 
 # Manages aspects concerning rounds, game rules, checkmate/stalemate conditions, saving and loading game.
 # (Might be too many responsibilites, though.)
@@ -13,6 +14,7 @@ class GameHandler
     @player1 = Player.new(1)
     @player2 = Player.new(2)
     @board_handler = BoardHandler.new
+    @movement = nil
   end
 
   def start_game
@@ -49,7 +51,8 @@ class GameHandler
     display_board(@board_handler)
     puts ask_input(current_player)
     current_player.raw_input = gets.chomp
-    @board_handler.move_piece(current_player.raw_input)
+    @movement = Movement.new(current_player.raw_input, @board_handler.board)
+    @movement.move_piece
     display_board(@board_handler)
   end
 end
