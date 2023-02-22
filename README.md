@@ -13,7 +13,7 @@ To do:
     * Update rspec tests to reflect this as well.
 * BoardHandler:
   * Test BoardHandler to make sure it initalizes the board correctly.
-  * Fix all moves being allowed to hop over pieces.
+  ~~* Fix all moves being allowed to hop over pieces.~~ Created movement class.
 * InputHandler:
   * ~~Manages player input.~~
   * Write tests to determine it is returning correctly parsed input.
@@ -42,5 +42,6 @@ Other:
 * Fix law of demeter violations. (Some weird chaining going on with my methods.)
 
 Save for later: 
+* Having to call legal_moves with @start_place.legal_moves(@start_place) is silly. Remove the need for an argument pass every time by using instance vars.
 * List the possible positions a player can go to before they enter their input.
 * GameHandler calls display message method, loops #gets when player enters bad input.
