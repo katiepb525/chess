@@ -1,8 +1,11 @@
 # frozen_string_literal: true
+
 require './lib/input_handler'
 
 # Manages movement of pieces and sees if illegal moves are attempting to be made.
 class Movement
+  attr_reader :board
+
   def initialize(raw_input, board)
     @raw_input = raw_input
     @board = board
@@ -34,7 +37,7 @@ class Movement
   end
 
   # this should be boardhandler's responsibility, not movement's
-  def update_board 
+  def update_board
     start_place_clone = @start_place.clone
     @start_place.current_piece = nil
     @start_place.update_symbol
