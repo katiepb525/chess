@@ -99,4 +99,62 @@ class Movement
     list
   end
 
+  def vert_places_between
+    list = []
+    x_coord = @start_place.x_coord
+    if @start_place.y_coord < @end_place.y_coord
+      offset_start = @start_place.y_coord + 1
+      offset_end = @end_place.y_coord - 1
+      range = (offset_start..offset_end)
+    else
+      offset_start = @start_place.y_coord - 1
+      offset_end = @end_place.y_coord + 1
+      range = (offset_start..offset_end).to_a
+    end
+
+    range.each do |y_coord|
+      list.push(@board.grid[y_coord][x_coord])
+    end
+    list
+  end
+
+  def diag_places_between
+    if @start_place.x_coord > @end_place.x_coord && @end_place.y_coord < @start_place.y_coord
+      diag_r_places_between
+    else
+      diag_l_places_between
+    end
+  end
+
+  def diag_r_places_between
+    list = []
+
+    offset_start = { x_coord: @start_place.x_coord + 1, y_coord: @start_place.y_coord - 1 }
+    offset_end = { x_coord: @end_place.x_coord - 1, y_coord: @end_place.y_coord + 1 }
+    range_x = (offset_start.x_coord..offset_end.x_coord).to_a
+    range_y = (offset_start.y_coord..offset_end.y_coord).to_a
+
+    range_y.each do |y_coord|
+      range_x.each do |x_coord|
+        list.push(@board.grid[y_coord][x_coord])
+      end
+    end
+    list
+  end
+
+  def diag_l_places_between
+    list = []
+
+    offset_start = { x_coord: @start_place.x_coord - 1, y_coord: @start_place.y_coord + 1 }
+    offset_end = { x_coord: @end_place.x_coord + 1, y_coord: @end_place.y_coord - 1 }
+    range_x = (offset_start.x_coord..offset_end.x_coord).to_a
+    range_y = (offset_start.y_coord..offset_end.y_coord).to_a
+
+    range_y.each do |y_coord|
+      range_x.each do |x_coord|
+        list.push(@board.grid[y_coord][x_coord])
+      end
+    end
+    list
+  end
 end
