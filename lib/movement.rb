@@ -1,6 +1,7 @@
 class Movement
-  def initialize(raw_input)
+  def initialize(raw_input, board)
     @raw_input = raw_input
+    @board = board
     @input_handler = InputHandler.new
     @start_place = nil
     @end_place = nil
