@@ -68,6 +68,8 @@ class Movement
     # grab spaces to check -- places between
     # check list of spaces with square_occupied
     to_check = places_between
+    return true if places_between.empty?
+
     to_check.all?(&:square_available?)
   end
 
@@ -83,8 +85,24 @@ class Movement
     end
   end
 
+  def nothing_between_x?
+    @start_place.x_coord - 1 == @end_place.x_coord || @end_place.x_coord - 1 == @start_place.x_coord ||
+    @start_place.x_coord + 1 == @end_place.x_coord || @end_place.x_coord + 1 == @start_place.x_coord
+  end
+
+  def nothing_between_y?
+    @start_place.y_coord - 1 == @end_place.y_coord || @end_place.y_coord - 1 == @start_place.y_coord ||
+    @start_place.y_coord + 1 == @end_place.y_coord || @end_place.y_coord + 1 == @start_place.y_coord
+  end
+
+  # def nothing_between_diag?
+
+  # end
+
   def horiz_places_between
     list = []
+    return list if nothing_between_x?
+
     y_coord = @start_place.y_coord
     if @start_place.x_coord < @end_place.x_coord
       offset_start = @start_place.x_coord + 1
@@ -103,7 +121,10 @@ class Movement
   end
 
   def vert_places_between
+
     list = []
+    return list if nothing_between_y?
+
     x_coord = @start_place.x_coord
     if @start_place.y_coord < @end_place.y_coord
       offset_start = @start_place.y_coord + 1
@@ -131,6 +152,7 @@ class Movement
 
   def diag_r_places_between
     list = []
+    # return list if nothing_between_diag?
 
     offset_start = { x_coord: @start_place.x_coord + 1, y_coord: @start_place.y_coord - 1 }
     offset_end = { x_coord: @end_place.x_coord - 1, y_coord: @end_place.y_coord + 1 }
@@ -147,6 +169,7 @@ class Movement
 
   def diag_l_places_between
     list = []
+    # return list if nothing_between_diag?
 
     offset_start = { x_coord: @start_place.x_coord - 1, y_coord: @start_place.y_coord + 1 }
     offset_end = { x_coord: @end_place.x_coord + 1, y_coord: @end_place.y_coord - 1 }
