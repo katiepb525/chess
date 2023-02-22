@@ -90,12 +90,13 @@ class Movement
     else
       offset_start = @start_place.x_coord - 1
       offset_end = @end_place.x_coord + 1
-      range = (offset_start..offset_end).to_arr
+      range = (offset_start..offset_end).to_a
     end
 
     range.each do |x_coord|
       list.push(@board.grid[y_coord][x_coord])
     end
+    list
   end
 
 end
