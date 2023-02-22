@@ -15,7 +15,7 @@ class Movement
     translate_coordinates
     begin
       @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
-      start_place_clone = start_place.clone
+      start_place_clone = @start_place.clone
       @end_place = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
     rescue NoMethodError
       raise 'Input is invalid'
