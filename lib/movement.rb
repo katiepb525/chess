@@ -11,23 +11,30 @@ class Movement
     @input_handler.notation_to_coordinates
   end
 
-  def move_piece
-    translate_coordinates
+  def set_start_and_end
     begin
       @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
-      start_place_clone = @start_place.clone
       @end_place = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
     rescue NoMethodError
       raise 'Input is invalid'
     end
-    # check if move is legal
-    raise 'Move is illegal' unless ok_to_move_to?
+  end
 
+  def update_board
+    start_place_clone = @start_place.clone
     @start_place.current_piece = nil
     @start_place.update_symbol
     @end_place.current_piece = start_place_clone.current_piece
     @end_place.update_symbol
   end
+
+  def move_piece
+    translate_coordinates
+    set_start_and_end
+    raise 'Move is illegal' unless ok_to_move_to?
+    update_board
+  end
+
 
   def is_legal_move?
     curr_piece = @start_place.current_piece
