@@ -60,7 +60,7 @@ class Movement
     # check list of spaces with square_occupied
     to_check = places_between
 
-    places_between.all?(&:square_available?)
+    to_check.all?(&:square_available?)
   end
 
   def places_between
