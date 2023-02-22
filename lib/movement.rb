@@ -1,11 +1,11 @@
 class Movement
-  
-  def initialize
+  def initialize(raw_input)
+    @raw_input = raw_input
     @input_handler = InputHandler.new
   end
 
-  def move_piece(raw_input)
-    @input_handler.notation = raw_input
+  def move_piece
+    @input_handler.notation = @raw_input
     @input_handler.notation_to_coordinates
     begin
       piece_to_move = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
