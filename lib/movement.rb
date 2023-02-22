@@ -53,16 +53,18 @@ class Movement
 
   def ok_to_move_to?
     # Should change according to if it can_hop.
-    # case curr_place.current_piece.can_hop
-    # when false
-    @end_place.square_available? && legal_move? # && path_clear? (if can_hop value is false)
+    case @start_place.current_piece.can_hop
+    when false
+      @end_place.square_available? && legal_move? && path_clear?
+    when true
+      @end_place.square_available? && legal_move?
+    end
   end
 
   def path_clear?
     # grab spaces to check -- places between
     # check list of spaces with square_occupied
     to_check = places_between
-
     to_check.all?(&:square_available?)
   end
 
