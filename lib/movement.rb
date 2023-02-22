@@ -68,9 +68,9 @@ class Movement
     return if @start_place.x_coord == @end_place.x_coord && @start_place.y_coord == @end_place.y_coord
 
     if @start_place.x_coord == @end_place.x_coord
-      horiz_places_between
-    elsif @start_place.y_coord == @end_place.y_coord
       vert_places_between
+    elsif @start_place.y_coord == @end_place.y_coord
+      horiz_places_between
     else
       diag_places_between
     end
