@@ -53,4 +53,26 @@ class Movement
     # when false
     @end_place.square_available? && legal_move?(@start_place, @end_place) # && piece_in_way? == false (if can_hop value is false)
   end
+
+  def piece_in_way?
+    # grab spaces to check -- places between
+    # check list of spaces with square_occupied
+    to_check = places_between
+
+    places_between.all? do |place|
+      place.square_available?
+    end
+  end
+
+  def places_between
+    return if @start_place.x_coord == @end_place.x_coord && @start_place.y_coord == @end_place.y_coord
+
+    if @start_place.x_coord == @end_place.x_coord
+      horiz_places_between
+    elsif @start_place.y_coord == @end_place.y_coord
+      vert_places_between
+    else
+      diag_places_between
+    end
+  end
 end
