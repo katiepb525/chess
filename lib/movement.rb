@@ -31,7 +31,8 @@ class Movement
     raise 'Input is invalid'
   end
 
-  def update_board
+  # this should be boardhandler's responsibility, not movement's
+  def update_board 
     start_place_clone = @start_place.clone
     @start_place.current_piece = nil
     @start_place.update_symbol
