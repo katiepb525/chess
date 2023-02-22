@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Movement
   def initialize(raw_input, board)
     @raw_input = raw_input
@@ -11,23 +13,22 @@ class Movement
     translate_coordinates
     set_start_and_end
     raise 'Move is illegal' unless ok_to_move_to?
+
     update_board
   end
-  
+
   private
-  
+
   def translate_coordinates
     @input_handler.notation = @raw_input
     @input_handler.notation_to_coordinates
   end
 
   def set_start_and_end
-    begin
-      @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
-      @end_place = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
-    rescue NoMethodError
-      raise 'Input is invalid'
-    end
+    @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
+    @end_place = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
+  rescue NoMethodError
+    raise 'Input is invalid'
   end
 
   def update_board
@@ -59,9 +60,7 @@ class Movement
     # check list of spaces with square_occupied
     to_check = places_between
 
-    places_between.all? do |place|
-      place.square_available?
-    end
+    places_between.all?(&:square_available?)
   end
 
   def places_between
