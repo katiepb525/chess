@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Contains display functions.
 module Display
   def intro_display
     "Welcome to..\n

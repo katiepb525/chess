@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+require './lib/input_handler'
 
+# Manages movement of pieces and sees if illegal moves are attempting to be made.
 class Movement
   def initialize(raw_input, board)
     @raw_input = raw_input
