@@ -6,9 +6,13 @@ class Movement
     @end_place = nil
   end
 
-  def move_piece
+  def translate_coordinates
     @input_handler.notation = @raw_input
     @input_handler.notation_to_coordinates
+  end
+
+  def move_piece
+    translate_coordinates
     begin
       @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
       start_place_clone = start_place.clone
