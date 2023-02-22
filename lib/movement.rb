@@ -75,4 +75,23 @@ class Movement
       diag_places_between
     end
   end
+
+  def horiz_places_between
+    list = []
+    y_coord = @start_place.y_coord
+    if @start_place.x_coord < @end_place.x_coord
+      offset_start = @start_place.x_coord + 1
+      offset_end = @end_place.x_coord - 1
+      range = (offset_start..offset_end)
+    else
+      offset_start = @start_place.x_coord - 1
+      offset_end = @end_place.x_coord + 1
+      range = (offset_start..offset_end).to_arr
+    end
+
+    range.each do |x_coord|
+      list.push(@board.grid[y_coord][x_coord])
+    end
+  end
+
 end
