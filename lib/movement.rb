@@ -38,7 +38,7 @@ class Movement
     @end_place.update_symbol
   end
 
-  def is_legal_move?
+  def legal_move?
     curr_piece = @start_place.current_piece
     legal_moves_of_piece = curr_piece.legal_moves(@start_place)
     legal_moves_of_piece.each do |legal_move|
@@ -51,6 +51,6 @@ class Movement
     # Should change according to if it can_hop.
     # case curr_place.current_piece.can_hop
     # when false
-    @end_place.square_available? && is_legal_move?(@start_place, @end_place) # && piece_in_way? == false (if can_hop value is false)
+    @end_place.square_available? && legal_move?(@start_place, @end_place) # && piece_in_way? == false (if can_hop value is false)
   end
 end
