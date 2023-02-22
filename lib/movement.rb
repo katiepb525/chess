@@ -6,6 +6,15 @@ class Movement
     @end_place = nil
   end
 
+  def move_piece
+    translate_coordinates
+    set_start_and_end
+    raise 'Move is illegal' unless ok_to_move_to?
+    update_board
+  end
+  
+  private
+  
   def translate_coordinates
     @input_handler.notation = @raw_input
     @input_handler.notation_to_coordinates
@@ -28,14 +37,6 @@ class Movement
     @end_place.update_symbol
   end
 
-  def move_piece
-    translate_coordinates
-    set_start_and_end
-    raise 'Move is illegal' unless ok_to_move_to?
-    update_board
-  end
-
-
   def is_legal_move?
     curr_piece = @start_place.current_piece
     legal_moves_of_piece = curr_piece.legal_moves(@start_place)
@@ -51,5 +52,4 @@ class Movement
     # when false
     @end_place.square_available? && is_legal_move?(@start_place, @end_place) # && piece_in_way? == false (if can_hop value is false)
   end
-
 end
