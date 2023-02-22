@@ -87,12 +87,12 @@ class Movement
 
   def nothing_between_x?
     @start_place.x_coord - 1 == @end_place.x_coord || @end_place.x_coord - 1 == @start_place.x_coord ||
-    @start_place.x_coord + 1 == @end_place.x_coord || @end_place.x_coord + 1 == @start_place.x_coord
+      @start_place.x_coord + 1 == @end_place.x_coord || @end_place.x_coord + 1 == @start_place.x_coord
   end
 
   def nothing_between_y?
     @start_place.y_coord - 1 == @end_place.y_coord || @end_place.y_coord - 1 == @start_place.y_coord ||
-    @start_place.y_coord + 1 == @end_place.y_coord || @end_place.y_coord + 1 == @start_place.y_coord
+      @start_place.y_coord + 1 == @end_place.y_coord || @end_place.y_coord + 1 == @start_place.y_coord
   end
 
   # def nothing_between_diag?
@@ -121,7 +121,6 @@ class Movement
   end
 
   def vert_places_between
-
     list = []
     return list if nothing_between_y?
 
@@ -129,11 +128,11 @@ class Movement
     if @start_place.y_coord < @end_place.y_coord
       offset_start = @start_place.y_coord + 1
       offset_end = @end_place.y_coord - 1
-      range = (offset_start..offset_end)
+      range = (offset_start..offset_end).to_a
     else
       offset_start = @start_place.y_coord - 1
       offset_end = @end_place.y_coord + 1
-      range = (offset_start..offset_end).to_a
+      range = (offset_start..offset_end)
     end
 
     range.each do |y_coord|
