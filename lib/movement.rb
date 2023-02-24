@@ -6,10 +6,10 @@ require './lib/input_handler'
 class Movement
   attr_reader :board
 
-  def initialize(raw_input, board)
+  def initialize(raw_input, board, input_handler)
     @raw_input = raw_input
     @board = board
-    @input_handler = InputHandler.new
+    @input_handler = input_handler
     @start_place = nil
     @end_place = nil
   end
