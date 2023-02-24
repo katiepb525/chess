@@ -33,4 +33,8 @@ module Display
     end
     puts "  #{%w[a b c d e f g h].join(' ')}"
   end
+  
+  def display_bad_input
+    "That's not valid notation. Examples of valid notation are: d2d3, g2g3, etc."
+  end
 end
