@@ -14,6 +14,7 @@ class GameHandler
     @player1 = Player.new(1)
     @player2 = Player.new(2)
     @board_handler = BoardHandler.new
+    @input_handler = InputHandler.new
     @movement = nil
   end
 
