@@ -47,14 +47,38 @@ class GameHandler
     play_game
   end
 
-  def play_game
-    current_player = play_round
-    display_board(@board_handler)
-    puts ask_input(current_player)
+  def handle_player_input(current_player)
     current_player.raw_input = gets.chomp
-    @movement = Movement.new(current_player.raw_input, @board_handler.board)
-    @movement.move_piece
-    display_board(@board_handler)
+    notation_valid = @input_handler.notation_is_valid?(current_player.raw_input)
+
+    until notation_valid
+      if notation_valid == false
+        puts display_bad_input
+      end
+      current_player.raw_input = gets.chomp
+    end
+  end
+
+  def play_game
+    until game_over?
+      current_player = play_round
+      display_board(@board_handler)
+      puts ask_input(current_player)
+      handle_player_input(current_player)
+      begin 
+        @movement = Movement.new(current_player.raw_input, @board_handler.board, @input_handler)
+        @movement.move_piece
+      rescue RuntimeError
+        puts "That move is illegal, please try again."
+        handle_player_input(current_player)
+      end
+      display_board(@board_handler)
+    end
+    # game_over_msg(current_player)
+  end
+
+  def game_over?
+    # stalemate? || checkmate?
   end
 end
 
