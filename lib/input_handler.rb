@@ -42,27 +42,27 @@ class InputHandler
     end
   end
 
-  private
-
   # Player can select a piece and move it in two inputs 'g4' 'd2'
   # Player can select a piece and move in it one string 'g4d2'
-  def notation_is_valid?
-    @notation.length == 2 || @notation.length == 4
-    case @notation.length
+  def notation_is_valid?(notation = @notation)
+    notation.length == 2 || notation.length == 4
+    case notation.length
     # when 2
     #   FILES.include?(@notation[1])
     #   RANKS.include?(@notation[0])
     #   @notation[0..1] != @chosen_piece # should throw an error when triggered
     when 4
-      FILES.include?(@notation[1])
-      RANKS.include?(@notation[0])
-      FILES.include?(@notation[3])
-      RANKS.include?(@notation[2])
-      @notation[0..1] != @notation[2..3] # should throw an error when triggered
+      FILES.include?(notation[1])
+      RANKS.include?(notation[0])
+      FILES.include?(notation[3])
+      RANKS.include?(notation[2])
+      notation[0..1] != notation[2..3] # should throw an error when triggered
     else
       false
     end
   end
+
+  private
 
   def rank_to_coordinate(notation_idx)
     RANKS.index(notation_idx)
