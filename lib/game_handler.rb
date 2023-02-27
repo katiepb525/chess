@@ -60,19 +60,28 @@ class GameHandler
     end
   end
 
+  def handle_player_movement(current_player) # Kind of messy?
+    @movement = Movement.new(current_player.raw_input, @board_handler.board, @input_handler)
+    case @movement.ok_to_move_to?
+    when true
+      @movement.move_piece
+    when false
+      until @movement.ok_to_move_to?
+        puts "That move is illegal. Please enter a legal move."
+        handle_player_input(current_player)
+        @movement = Movement.new(current_player.raw_input, @board_handler.board, @input_handler)
+      end
+      @movement.move_piece
+    end
+  end
+
   def play_game
     until game_over? # will loop indefinetely! wip
       current_player = play_round
       display_board(@board_handler)
       puts ask_input(current_player)
       handle_player_input(current_player)
-      begin 
-        @movement = Movement.new(current_player.raw_input, @board_handler.board, @input_handler)
-        @movement.move_piece
-      rescue RuntimeError
-        puts "That move is illegal, please try again."
-        handle_player_input(current_player)
-      end
+      handle_player_movement(current_player)
       display_board(@board_handler)
     end
     # game_over_msg(current_player)
