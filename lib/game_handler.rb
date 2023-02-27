@@ -56,6 +56,7 @@ class GameHandler
         puts display_bad_input
       end
       current_player.raw_input = gets.chomp
+      notation_valid = @input_handler.notation_is_valid?(current_player.raw_input)
     end
   end
 
