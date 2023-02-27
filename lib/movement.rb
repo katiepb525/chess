@@ -13,6 +13,7 @@ class Movement
     @end_place = input_handler.end_place
   end
 
+  # Checks for illegal moves and asks for new notation. Only moves piece when move is not illegal.
   def handle_player_movement(input_handler)
     # binding.pry
     case ok_to_move_to?
