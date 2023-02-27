@@ -48,14 +48,11 @@ class GameHandler
     play_game
   end
 
-
   def play_game
     until game_over? # will loop indefinetely! wip
       current_player = play_round
       display_board(@board_handler)
       puts ask_input(current_player)
-      @input_handler.handle_player_input
-      @input_handler.translate_coordinates(@board_handler.board)
       @movement.handle_player_movement(@input_handler)
       display_board(@board_handler)
     end
