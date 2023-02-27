@@ -1,23 +1,34 @@
 # frozen_string_literal: true
 
-require './lib/input_handler'
-
 # Manages movement of pieces and sees if illegal moves are attempting to be made.
 class Movement
-  attr_reader :board
-
-  def initialize(raw_input, board, input_handler)
-    @raw_input = raw_input
+  def initialize(board)
     @board = board
-    @input_handler = input_handler
     @start_place = nil
     @end_place = nil
   end
 
-  def ok_to_move_to?
-    translate_coordinates
-    set_start_and_end # I feel like methods should both be inputhandler's responsibility. Temporary solution.
+  def get_start_and_end(input_handler)
+    @start_place = input_handler.start_place
+    @end_place = input_handler.end_place
+  end
 
+  def handle_player_movement(input_handler)
+    # binding.pry
+    case ok_to_move_to?
+    when true
+      move_piece
+    when false
+      until ok_to_move_to?
+        puts "That move is illegal. Please enter a legal move."
+        input_handler.handle_player_input # grabs new notation 
+        get_start_and_end(input_handler) # updates notation
+      end
+      move_piece
+    end
+  end
+
+  def ok_to_move_to?
     return false if @start_place.square_available? # Start should not be empty.
     
     # Should change according to if it can_hop.
@@ -34,18 +45,6 @@ class Movement
   end
 
   private
-
-  def translate_coordinates
-    @input_handler.notation = @raw_input
-    @input_handler.notation_to_coordinates
-  end
-
-  def set_start_and_end
-    @start_place = @board.grid[@input_handler.chosen_piece[:x_coord]][@input_handler.chosen_piece[:y_coord]]
-    @end_place = @board.grid[@input_handler.chosen_place[:x_coord]][@input_handler.chosen_place[:y_coord]]
-  rescue NoMethodError
-    raise 'Input is invalid'
-  end
 
   # this should be boardhandler's responsibility, not movement's
   def update_board
