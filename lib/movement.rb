@@ -30,6 +30,8 @@ class Movement
     end
   end
 
+  private
+
   def ok_to_move_to?
     return false if @start_place.square_available? # Start should not be empty.
     
@@ -45,8 +47,6 @@ class Movement
   def move_piece
     update_board if ok_to_move_to?
   end
-
-  private
 
   # this should be boardhandler's responsibility, not movement's
   def update_board
