@@ -156,8 +156,8 @@ class Movement
 
     offset_start = { x_coord: @start_place.x_coord + 1, y_coord: @start_place.y_coord - 1 }
     offset_end = { x_coord: @end_place.x_coord - 1, y_coord: @end_place.y_coord + 1 }
-    range_x = (offset_start.x_coord..offset_end.x_coord).to_a
-    range_y = (offset_start.y_coord..offset_end.y_coord).to_a
+    range_x = (offset_start[:x_coord]..offset_end[:x_coord]).to_a
+    range_y = (offset_start[:y_coord]..offset_end[:y_coord]).to_a
 
     range_y.each do |y_coord|
       range_x.each do |x_coord|
@@ -173,8 +173,8 @@ class Movement
 
     offset_start = { x_coord: @start_place.x_coord - 1, y_coord: @start_place.y_coord + 1 }
     offset_end = { x_coord: @end_place.x_coord + 1, y_coord: @end_place.y_coord - 1 }
-    range_x = (offset_start.x_coord..offset_end.x_coord).to_a
-    range_y = (offset_start.y_coord..offset_end.y_coord).to_a
+    range_x = (offset_start[:x_coord]..offset_end[:x_coord]).to_a
+    range_y = (offset_start[:y_coord]..offset_end[:y_coord]).to_a
 
     range_y.each do |y_coord|
       range_x.each do |x_coord|
