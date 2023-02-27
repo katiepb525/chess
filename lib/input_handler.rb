@@ -1,68 +1,97 @@
 # frozen_string_literal: true
+require './lib/display'
 
 # Manages player input.
-# I have written some functionality for a process like 'd2' then a prompt,
-# followed by 'd3' to be acceptable way of entering input. I've commented it out
-# for now since its not a necessary feature for the functionality of the game.
 class InputHandler
-  attr_reader :chosen_piece, :chosen_place
-  attr_accessor :notation
+  include Display
+  attr_reader :start_place, :end_place
 
   RANKS = %w[a b c d e f g h].freeze
   FILES = %w[1 2 3 4 5 6 7 8].freeze
 
   def initialize
     @notation = nil
-    @chosen_piece = nil
-    @chosen_place = nil
+    @start_place = nil
+    @end_place = nil
   end
 
-  # Uses a modified form of algebraic notation to determine moves.
-  def notation_to_coordinates
-    return unless notation_is_valid?
+  # Loops gets until given notation is valid. Then translates coordinates.
+  def handle_player_input
+    raw_input = gets.chomp
+    @notation = raw_input
+    notation_valid = notation_is_valid?
 
-    coordinates = { x_coord: nil, y_coord: nil }
-    case @notation.length
-    # when 2
-    #   coordinates[:x_coord] = file_to_coordinate(@notation[0])
-    #   coordinates[:y_coord] = rank_to_coordinate(@notation[1])
-    #   @chosen_piece.nil? ? @chosen_piece = coordinates : @chosen_place = coordinates
-    when 4
-      curr_file_1 = notation[1]
-      curr_rank_1 = notation[0]
-      curr_file_2 = notation[3]
-      curr_rank_2 = notation[2]
-      coordinates[:x_coord] = file_to_coordinate(curr_file_1)
-      coordinates[:y_coord] = rank_to_coordinate(curr_rank_1)
-      @chosen_piece = coordinates.clone
-      coordinates.clear
-      coordinates[:x_coord] = file_to_coordinate(curr_file_2)
-      coordinates[:y_coord] = rank_to_coordinate(curr_rank_2)
-      @chosen_place = coordinates.clone
+    until notation_valid
+      if notation_valid == false
+        puts display_bad_input
+      end
+      raw_input = gets.chomp
+      @notation = raw_input
+      notation_valid = notation_is_valid?
     end
   end
 
-  # Player can select a piece and move it in two inputs 'g4' 'd2'
-  # Player can select a piece and move in it one string 'g4d2'
-  def notation_is_valid?(notation = @notation)
-    notation.length == 2 || notation.length == 4
-    case notation.length
-    # when 2
-    #   FILES.include?(@notation[1])
-    #   RANKS.include?(@notation[0])
-    #   @notation[0..1] != @chosen_piece # should throw an error when triggered
-    when 4
-      FILES.include?(notation[1])
-      RANKS.include?(notation[0])
-      FILES.include?(notation[3])
-      RANKS.include?(notation[2])
-      notation[0..1] != notation[2..3] # should throw an error when triggered
-    else
-      false
-    end
+  def translate_coordinates(board)
+    @start_place = board.grid[start_to_coord[:x_coord]][start_to_coord[:y_coord]]
+    @end_place = board.grid[end_to_coord[:x_coord]][end_to_coord[:y_coord]]
   end
-
+  
   private
+
+  def notation_is_valid?
+    return false if @notation.length != 4
+
+    has_valid_files? && has_valid_ranks? && places_not_same?
+  end
+  
+  def start_to_coord    
+    curr_file_1 = @notation[1]
+    curr_rank_1 = @notation[0]
+    to_coords(curr_file_1, curr_rank_1)
+  end
+
+  def end_to_coord
+    curr_file_2 = @notation[3]
+    curr_rank_2 = @notation[2]
+    to_coords(curr_file_2, curr_rank_2)
+  end
+
+  def to_coords(file, rank)
+    coordinates = { x_coord: nil, y_coord: nil }
+    coordinates[:x_coord] = file_to_coordinate(file)
+    coordinates[:y_coord] = rank_to_coordinate(rank)
+    coordinates
+  end
+
+  def places_not_same?
+    @notation[0..1] != @notation[2..3]
+  end
+
+  def has_valid_ranks?
+    RANKS.include?(@notation[0])
+    RANKS.include?(@notation[2])
+  end
+
+  def has_valid_files?
+    FILES.include?(@notation[1])
+    FILES.include?(@notation[3])
+  end
+
+  def correct_obj_types?
+    begin
+      @notation[1].to_i
+    rescue
+      return false
+    end
+    
+    begin 
+      @notation[3].to_i
+    rescue
+      return false
+    end
+
+    true
+  end
 
   def rank_to_coordinate(notation_idx)
     RANKS.index(notation_idx)
