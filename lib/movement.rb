@@ -14,12 +14,23 @@ class Movement
     @end_place = nil
   end
 
-  def move_piece
+  def ok_to_move_to?
     translate_coordinates
-    set_start_and_end
-    raise 'Move is illegal' unless ok_to_move_to?
+    set_start_and_end # I feel like methods should both be inputhandler's responsibility. Temporary solution.
 
-    update_board
+    return false if @start_place.square_available? # Start should not be empty.
+    
+    # Should change according to if it can_hop.
+    case @start_place.current_piece.can_hop
+    when false
+      @end_place.square_available? && legal_move? && path_clear?
+    when true
+      @end_place.square_available? && legal_move?
+    end
+  end
+
+  def move_piece
+    update_board if ok_to_move_to?
   end
 
   private
@@ -52,18 +63,6 @@ class Movement
       return true if legal_move.x_coord == @end_place.x_coord && legal_move.y_coord == @end_place.y_coord
     end
     false
-  end
-
-  def ok_to_move_to?
-    return false if @start_place.square_available? # Start should not be empty.
-    
-    # Should change according to if it can_hop.
-    case @start_place.current_piece.can_hop
-    when false
-      @end_place.square_available? && legal_move? && path_clear?
-    when true
-      @end_place.square_available? && legal_move?
-    end
   end
 
   def path_clear?
