@@ -15,14 +15,15 @@ class Movement
 
   # Checks for illegal moves and asks for new notation. Only moves piece when move is not illegal.
   def handle_player_movement(input_handler)
-    # binding.pry
+    input_handler.handle_player_input(@board) # grabs new notation 
+    get_start_and_end(input_handler) # updates notation
     case ok_to_move_to?
     when true
       move_piece
     when false
       until ok_to_move_to?
         puts "That move is illegal. Please enter a legal move."
-        input_handler.handle_player_input # grabs new notation 
+        input_handler.handle_player_input(@board) # grabs new notation 
         get_start_and_end(input_handler) # updates notation
       end
       move_piece
