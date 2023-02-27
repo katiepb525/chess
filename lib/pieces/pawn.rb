@@ -21,6 +21,12 @@ class Pawn < Piece
     place_handler.create_legal_moveset(@possible_directions, place)
     place_handler.list
   end
+
+  def to_dark_color
+    super
+    @possible_directions = [[0, 1]]
+    @possible_directions_capture = [[-1, 1], [1, 1]]
+  end
 end
 
 # place = Place.new(3, 3)
