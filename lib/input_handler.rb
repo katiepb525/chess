@@ -15,8 +15,8 @@ class InputHandler
     @end_place = nil
   end
 
-  # Loops gets until given notation is valid. Then translates coordinates.
-  def handle_player_input
+  # Loops gets until notation is valid. Only translates coordinates when given valid notation.
+  def handle_player_input(board) # rename method?
     raw_input = gets.chomp
     @notation = raw_input
     notation_valid = notation_is_valid?
