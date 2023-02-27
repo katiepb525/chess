@@ -29,6 +29,8 @@ class InputHandler
       @notation = raw_input
       notation_valid = notation_is_valid?
     end
+
+    translate_coordinates(board)
   end
 
   def translate_coordinates(board)
