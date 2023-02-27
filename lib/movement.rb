@@ -55,6 +55,8 @@ class Movement
   end
 
   def ok_to_move_to?
+    return false if @start_place.square_available? # Start should not be empty.
+    
     # Should change according to if it can_hop.
     case @start_place.current_piece.can_hop
     when false
